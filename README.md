@@ -1,31 +1,16 @@
 # Hexafonter
 
-A command-line tool that convert a PNG file like this:
+A command-line tool that will convert a PNG file with a fixed-width pixel font
+for small LCD displays, like this:
 
-![(sample font image)](./sample-font.png)
+![(sample font image)](./font.png)
 
-to a C file with a sideways preview and a character code legend,
-.
+to a C file with a sideways preview and a character code legend, like this:
 
-Sample result (see [`sample-output.c`](./sample-output.c) for the full thing):
+![(sample output screenshot)](./output-screenshot.png)
 
-```plain
-////////////////////////////////////
-  0x3E, 0x41, 0x5D, // [🬦🬡🬰🬧] \x40 @
-  0x49, 0x2E, 0x00, // [🬁🬃🬌🬅]
-  0x7E, 0x09, 0x09, // [🬁🬂🬕🬧] \x41 A
-  0x09, 0x7E, 0x00, // [🬇🬋🬌🬅]
-  0x7F, 0x49, 0x49, // [▐🬂🬕🬨] \x42 B
-  0x49, 0x36, 0x00, // [🬁🬋🬈🬅]
-  0x3E, 0x41, 0x41, // [🬦🬂🬂🬧] \x43 C
-  0x41, 0x22, 0x00, // [🬁🬃 🬅]
-  0x7F, 0x41, 0x41, // [▐🬂🬂🬨] \x44 D
-  0x41, 0x3E, 0x00, // [🬁🬋🬋🬅]
-  0x7F, 0x49, 0x49, // [▐🬂🬕🬨] \x45 E
-  0x41, 0x41, 0x00, // [🬉  🬉]
-  0x7F, 0x09, 0x09, // [🬁🬂🬕🬨] \x46 F
-  0x01, 0x01, 0x00, // [   🬉]
-```
+See [`sample-output.c`](./sample-output.c) for the full thing -- but note that
+you need a relatively modern monospace font for this to look good.
 
 
 ## Installation
@@ -69,8 +54,11 @@ treshold operation. That means:
 
 - Don't use (semi-)transparent images.
   (The tool does not “see” what you see in the transparent regions.)
-- Green, cyan, blue, and all dark colors are treated as black (on).
-- Red, yellow, magenta, and all light colors are treated as white (off).
+- Dark colors, especially green/cyan/blue, are treated as black (on).
+- Light colors, especially red/yellow/magenta, and all are treated as
+  white (off).
+
+The preview in the C file uses Unicode `BLOCK SEXTANT` characters.
 
 
 ## License
