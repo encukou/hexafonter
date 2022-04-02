@@ -7,7 +7,6 @@ name = "hexafonter"
 authors = [
     {name = "Petr Viktorin", email = "encukou@gmail.com"},
 ]
-readme = "README.md"
 classifiers = [
     "License :: OSI Approved :: MIT License",
 ]
@@ -16,6 +15,10 @@ dependencies = [
     "pypng",
 ]
 dynamic = ["version", "description"]
+
+# I don't know of a good way to include images on PyPI,
+# so just show a small blurb with a link to GitHub.
+readme = "pypi-readme.md"
 
 [project.scripts]
 hexafonter = "hexafonter:main"
