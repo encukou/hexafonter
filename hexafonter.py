@@ -38,6 +38,10 @@ SEXTANTS = ' 🬁🬀🬂🬇🬉🬈🬊🬃🬅🬄🬆🬋🬍🬌🬎🬞�
 escapes = {i: f' \\{c}' for i, c in enumerate('abtnvfr', start=7)}
 
 DEFAULT_PREAMBLE = """\
+const unsigned char font[] =\
+"""
+
+PROGMEM_PREAMBLE = """\
 #include "progmem.h"
 const unsigned char font[] PROGMEM =\
 """
@@ -139,8 +143,14 @@ def main(argv=None):
         'width', type=int, nargs='?', default=6,
         help='Width of each character (default: 6)')
     parser.add_argument(
-        '-p', '--preamble',
+        '-p', '--preamble-file',
         help='File with a custom preamble text. Use - to disable preamble.')
+    parser.add_argument(
+        '-P', '--preamble-text', type=str,
+        help='Custom preamble text.')
+    parser.add_argument(
+        '--progmem', dest='preamble_text', nargs='?', const=PROGMEM_PREAMBLE,
+        help='Use PROGMEM preamble (for Arduino etc.)')
     parser.add_argument(
         '-o', '--outfile', default='-',
         help='Output file. Use - (default) for standard output.')
@@ -163,15 +173,19 @@ def main(argv=None):
             img_data = list(img_data)
 
         # Read the preamble
-        if args.preamble == None:
-            preamble = DEFAULT_PREAMBLE
-        elif args.preamble == '-':
-            preamble = ''
-        else:
-            with open(args.preamble, encoding='utf-8') as f:
+        if args.preamble_text:
+            if args.preamble_file:
+                exit('')
+            preamble = args.preamble_text
+        elif args.preamble_file == '-':
+            preamble = 'Choose only one of --preamble-file/--preamble-text'
+        elif args.preamble_file:
+            with open(args.preamble_file, encoding='utf-8') as f:
                 preamble = f.read()
                 if preamble.endswith('\n'):
                     preamble = preamble[:-1]
+        else:
+            preamble = DEFAULT_PREAMBLE
 
         # Generate and output
         with contextlib.ExitStack() as stack:

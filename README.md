@@ -33,11 +33,24 @@ The height is hard-coded, but you can change the width by adding a number:
 
     python -m hexafonter arcade-font.png 8 > output-font.c
 
-Several options:
+Several options let you select a *preamble*, which should contain the C
+variable declaration (up to `=`),
+and any `#include` or `#define `directives or other code you need before it.
+The default preamble is:
 
-* `-p preamble-file`: Use a custom preamble (`#include` and variable
-  declaration)
+```
+const unsigned char font[] =
+```
+
+You can customize it with these options:
+
+* `-p preamble-file`: Load a preamble from the given file
 * `-p -`: Use *no* preamble (useful if you prepend it some other way)
+* `-P ...`: Use the `...` directly
+* `-progmem`: Use a preamble for Arduino-style [PROGMEM](https://www.arduino.cc/reference/en/language/variables/utilities/progmem/)
+
+Other options:
+
 * `-o outfile.c`: Output to the given file, rather than stdout (i.e. don't
   combine this with the `> outfile` part shown above)
 * `-r`: Reverse mode -- convert a C file to a PNG instead.

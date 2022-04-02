@@ -1,5 +1,4 @@
-#include "progmem.h"
-const unsigned char font[] PROGMEM = {
+const unsigned char font[] = {
 ////////////////////////////////////
   0x00, 0x00, 0x00, // [    ] \x00
   0x00, 0x00, 0x00, // [    ]

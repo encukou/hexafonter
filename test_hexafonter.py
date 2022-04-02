@@ -8,7 +8,10 @@ import hexafonter
 
 TESTS_THERE = {
     'generic': ('font.png', 'sample-output.c', []),
-    'keeb': ('examples/keeb-font.png', 'examples/keeb-font.c', []),
+    'keeb': (
+        'examples/keeb-font.png', 'examples/keeb-font.c',
+        ['--progmem'],
+    ),
     'atascii': (
         'examples/atascii.png', 'examples/atascii.c',
         ['8', '-p', 'examples/custom-preamble.inc'],
