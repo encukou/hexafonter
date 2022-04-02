@@ -10,7 +10,7 @@ import re
 
 import png
 
-__version__ = '0.1'
+__version__ = '0.1.1'
 
 SEXTANT_WIDTH = 3
 ROW_HEIGHT = 8

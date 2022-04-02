@@ -3,13 +3,13 @@
 A command-line tool that will convert a PNG file with a fixed-width pixel font
 for small LCD displays, like this:
 
-![(sample font image)](./font.png)
+![(sample font image)](https://github.com/encukou/hexafonter/raw/main/font.png)
 
 to a C file with a sideways preview and a character code legend, like this:
 
-![(sample output screenshot)](./output-screenshot.png)
+![(sample output screenshot)](https://github.com/encukou/hexafonter/raw/main/output-screenshot.png)
 
-See [`sample-output.c`](./sample-output.c) for the full thing -- but note that
+See [`sample-output.c`](https://github.com/encukou/hexafonter/blob/main/sample-output.c) for the full thing -- but note that
 you need a relatively modern monospace font for this to look good.
 
 
