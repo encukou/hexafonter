@@ -17,5 +17,8 @@ dependencies = [
 ]
 dynamic = ["version", "description"]
 
+[project.scripts]
+hexafonter = "hexafonter:main"
+
 [project.urls]
 Source = "https://github.com/encukou/hexafonter"

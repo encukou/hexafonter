@@ -130,7 +130,7 @@ def ungen_font(data, outfile, width=6):
 
 def main(argv=None):
     if argv is None:
-        argv = ays.argv
+        argv = sys.argv
     parser = argparse.ArgumentParser(argv[0], description=__doc__)
     parser.add_argument(
         'file',
